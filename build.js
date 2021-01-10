@@ -21,7 +21,7 @@ https.get('https://api.coindesk.com/v1/bpi/currentprice/rub.json', (res) => {
 
         console.log(parsedData);
 
-        const output = source.replace('BTC_PRICE', formatPrice(Math.floor(parsedData.bpi.RUB.rate_float * 0.18)));
+        const output = source.replace(/BTC_PRICE/g, formatPrice(Math.floor(parsedData.bpi.RUB.rate_float * 0.18)));
 
         fs.writeFileSync('./site/index.html', output);
     });
